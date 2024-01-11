@@ -1,0 +1,40 @@
+<p>test-bind works!</p>
+<input type="text" [(ngModel)]="name">
+<!-- <input type="text" (input)="onType($event)"> -->
+
+<p>{{name}} --</p>
+@if(status==='online'){
+    <p>sads</p>
+    <p>sads</p>
+    <p>sads</p>
+    <p>sads</p>
+}
+@else{
+<p>asasdsad</p>
+}
+<p *ngIf="allow ;else elseServer">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores possimus minus eos. </p>
+<ng-template #elseServer>
+    <p>else is triggered</p>
+</ng-template>
+<button class="btn" [disabled]="name.trim()==='' " (click)="resetName()">Submit</button>
+<p [ngClass]="{online :status==='online'}" [ngStyle]="{backgroundColor:getColor()}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eaque eius ipsam quia, eveniet voluptates?
+</p>
+
+<ul>
+    <li *ngFor="let item of friendslist">
+        {{ item.name }} {{ item.age }}
+
+    </li>
+</ul>
+
+
+<ul>
+    
+@for(item of friendslist;track item.age){
+    <li *ngFor="let item of friendslist">
+        {{ item.name }} {{ item.age }}
+
+    </li>
+}
+
+</ul>
