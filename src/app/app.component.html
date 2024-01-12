@@ -1,6 +1,28 @@
-<h2>APP Component</h2>
+<!-- <h2>APP Component</h2> -->
 <!-- <app-test-bind></app-test-bind> -->
 <!-- <app-user></app-user>
 <app-server></app-server> -->
 
-<app-parent></app-parent>
+<!-- <app-parent></app-parent> -->
+
+
+<div class="container">
+    <app-cokpit (serverAdd)="onAddServer($event)" (bluePrintAdd)="onAddBlueprint($event)"></app-cokpit>
+    <hr>
+    <button (click)="onDestroy()" class="btn btn-danger">
+        Delete
+    </button>
+    <div class="row">
+      <div class="col-xs-12">
+        <app-server-element [svrElement]="serverElement" *ngFor="let serverElement of serverElements">
+            <p>
+                <strong *ngIf="serverElement.type === 'server'" style="color: red">{{
+                  serverElement.content
+                }}</strong>
+                <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+              </p>
+        </app-server-element>
+      </div>
+    </div>
+  </div>
+  

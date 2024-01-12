@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,EventEmitter, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-cokpit',
@@ -6,23 +6,22 @@ import { Component } from '@angular/core';
   styleUrl: './cokpit.component.css'
 })
 export class CokpitComponent {
-  serverElements = [];
   newServerName = '';
   newServerContent = '';
-  
-  onAddServer() {
-    this.serverElements.push({
-      type: 'server',
-      name: this.newServerName,
-      content: this.newServerContent
-    });
-  }
+  @ViewChild('serverContentInput') serverContentInput
+  @Output() serverAdd=new EventEmitter<{serverName:string,serverContent:string}>()
+  @Output() bluePrintAdd=new EventEmitter<{serverName:string,serverContent:string}>()
 
-  onAddBlueprint() {
-    this.serverElements.push({
-      type: 'blueprint',
-      name: this.newServerName,
-      content: this.newServerContent
-    });
+  onAddServer(){
+    this.serverAdd.emit({
+      serverName:this.newServerName,
+      serverContent:this.newServerContent
+    })
+  }
+  onAddBlueprint(){
+    this.bluePrintAdd.emit({
+      serverName:this.newServerName,
+      serverContent:this.newServerContent
+    })
   }
 }
